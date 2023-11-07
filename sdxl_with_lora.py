@@ -9,6 +9,7 @@ lora_model_path = "models/lora"
 # 初始化Pipeline
 pipe = StableDiffusionXLPipeline.from_single_file(model_path)
 # pipe.load_lora_weights(lora_model_path, weight_name="pixel-art-xl.safetensors")
+# pipe.fuse_lora(lora_scale=0.8)
 
 # LoRA one.
 pipe.load_lora_weights(lora_model_path, weight_name="cyborg_style_xl-off.safetensors")
