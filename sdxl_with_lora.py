@@ -4,20 +4,18 @@ from diffusers import StableDiffusionXLPipeline
 
 # 模型路径
 model_path = "models/sd/sd_xl_base_1.0.safetensors"
-# lora_model_path = "models/lora/pixel-art-xl.safetensors"
+lora_model_path = "models/lora"
 
 # 初始化Pipeline
 pipe = StableDiffusionXLPipeline.from_single_file(model_path)
-# pipe.load_lora_weights(lora_model_path)
+# pipe.load_lora_weights(lora_model_path, weight_name="pixel-art-xl.safetensors")
 
 # LoRA one.
-lora_model_path_1 = "models/lora"
-pipe.load_lora_weights(lora_model_path_1, weight_name="cyborg_style_xl-off.safetensors")
+pipe.load_lora_weights(lora_model_path, weight_name="cyborg_style_xl-off.safetensors")
 pipe.fuse_lora(lora_scale=0.7)
 
 # LoRA two.
-lora_model_path_2 = "models/lora"
-pipe.load_lora_weights(lora_model_path_2, weight_name="pikachu.safetensors")
+pipe.load_lora_weights(lora_model_path, weight_name="pikachu.safetensors")
 pipe.fuse_lora(lora_scale=0.7)
 
 # 确定设备
