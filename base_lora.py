@@ -1,9 +1,10 @@
 from diffusers import StableDiffusionPipeline
 import torch
 
-model_path = "sayakpaul/sd-model-finetuned-lora-t4"
-pipe = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", torch_dtype=torch.float16)
-pipe.unet.load_attn_procs(model_path)
+model_path = "stabilityai/stable-diffusion-xl-base-1.0"
+lora_model_path = "ostris/ikea-instructions-lora-sdxl"
+pipe = StableDiffusionPipeline.from_pretrained(model_path, torch_dtype=torch.float16)
+pipe.unet.load_attn_procs(lora_model_path)
 pipe.to("cuda")
 
 prompt = "A pokemon with blue eyes."
