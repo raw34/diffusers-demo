@@ -18,5 +18,5 @@ image = pipe(
     num_inference_steps=n_steps,
 ).images[0]
 
-filename = f"output/sdxl{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}.png"
+filename = f"output/sd_{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}.png"
 image.save(filename)

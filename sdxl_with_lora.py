@@ -31,5 +31,5 @@ image = pipe(
 ).images[0]
 
 # 生成文件名，包含当前时间
-filename = f"output/sdxl{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}.png"
+filename = f"output/sdxl_with_lora_{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}.png"
 image.save(filename)

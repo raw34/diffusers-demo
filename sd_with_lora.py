@@ -17,5 +17,5 @@ n_steps = 30
 
 image = pipe(prompt, num_inference_steps=n_steps, guidance_scale=7.5, cross_attention_kwargs={"scale": 0.5}).images[0]
 
-filename = f"output/sdxl{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}.png"
+filename = f"output/sd_with_lora_{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}.png"
 image.save(filename)
