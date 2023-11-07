@@ -13,5 +13,7 @@ pipe.load_lora_weights(lora_model_path)
 pipe = pipe.to("cuda" if torch.cuda.is_available() else "cpu")
 
 prompt = "A pokemon with blue eyes."
-image = pipe(prompt, num_inference_steps=30, guidance_scale=7.5, cross_attention_kwargs={"scale": 0.5}).images[0]
+n_steps = 30
+
+image = pipe(prompt, num_inference_steps=n_steps, guidance_scale=7.5, cross_attention_kwargs={"scale": 0.5}).images[0]
 image.save(f"output/base_lora_{datetime.time}.png")

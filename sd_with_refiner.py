@@ -19,7 +19,7 @@ refiner = DiffusionPipeline.from_pretrained(
 refiner.to("cuda")
 
 # Define how many steps and what % of steps to be run on each experts (80/20) here
-n_steps = 40
+n_steps = 30
 high_noise_frac = 0.8
 
 prompt = "A majestic lion jumping from a big stone at night"
