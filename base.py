@@ -16,8 +16,13 @@ pipe = pipe.to("cuda" if torch.cuda.is_available() else "cpu")
 # if using torch < 2.0
 # pipe.enable_xformers_memory_efficient_attention()
 
+n_steps = 40
+
 prompt = "An astronaut riding a green horse"
 
-images = pipe(prompt=prompt).images[0]
+images = pipe(
+    prompt=prompt,
+    num_inference_steps=n_steps,
+).images[0]
 
 images.save("output/base.png")
