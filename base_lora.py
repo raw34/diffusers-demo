@@ -1,3 +1,5 @@
+import datetime
+
 from diffusers import DiffusionPipeline
 import torch
 
@@ -12,4 +14,4 @@ pipe = pipe.to("cuda" if torch.cuda.is_available() else "cpu")
 
 prompt = "A pokemon with blue eyes."
 image = pipe(prompt, num_inference_steps=30, guidance_scale=7.5, cross_attention_kwargs={"scale": 0.5}).images[0]
-image.save("output/base_lora.png")
+image.save(f"output/base_lora_{datetime.time}.png")

@@ -1,3 +1,5 @@
+import datetime
+
 from diffusers import DiffusionPipeline
 from diffusers import StableDiffusionPipeline
 import torch
@@ -25,4 +27,4 @@ images = pipe(
     num_inference_steps=n_steps,
 ).images[0]
 
-images.save("output/base.png")
+images.save(f"output/base{datetime.time}.png")

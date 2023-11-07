@@ -1,3 +1,5 @@
+import datetime
+
 from diffusers import DiffusionPipeline
 import torch
 
@@ -36,4 +38,4 @@ image = refiner(
     image=image,
 ).images[0]
 
-image.save("output/base_refiner.png")
+image.save(f"output/base_refiner{datetime.time}.png")
