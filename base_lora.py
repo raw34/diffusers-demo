@@ -1,12 +1,12 @@
-from diffusers import StableDiffusionPipeline
+from diffusers import DiffusionPipeline
 import torch
 
 # model_path = "stabilityai/stable-diffusion-xl-base-1.0"
-# lora_model_path = "ostris/ikea-instructions-lora-sdxl"
+# lora_model_path = "nerijs/pixel-art-xl"
 model_path = "models/stable-diffusion-xl-base-1.0"
 lora_model_path = "models/pixel-art-xl"
-pipe = StableDiffusionPipeline.from_pretrained(model_path, torch_dtype=torch.float16)
-pipe.unet.load_attn_procs(lora_model_path)
+pipe = DiffusionPipeline.from_pretrained(model_path, torch_dtype=torch.float16)
+pipe.load_lora_weights(lora_model_path)
 
 pipe = pipe.to("cuda" if torch.cuda.is_available() else "cpu")
 
