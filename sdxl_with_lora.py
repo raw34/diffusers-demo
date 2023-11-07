@@ -11,12 +11,12 @@ pipe = StableDiffusionXLPipeline.from_single_file(model_path)
 pipe.load_lora_weights(lora_model_path)
 
 # LoRA one.
-lora_model_path_1 = "models/cyborg_style_xl.safetensors"
+lora_model_path_1 = "models/cyborg_style_xl-off.safetensors"
 pipe.load_lora_weights(lora_model_path_1)
 pipe.fuse_lora(lora_scale=0.7)
 
 # LoRA two.
-lora_model_path_2 = "models/Pikachu_SDXL.safetensors"
+lora_model_path_2 = "models/pikachu.safetensors"
 pipe.load_lora_weights(lora_model_path_2)
 pipe.fuse_lora(lora_scale=0.7)
 
