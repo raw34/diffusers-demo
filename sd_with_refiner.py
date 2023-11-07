@@ -38,4 +38,5 @@ image = refiner(
     image=image,
 ).images[0]
 
-image.save(f"output/base_refiner{datetime.time}.png")
+filename = f"output/sdxl{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}.png"
+image.save(filename)
