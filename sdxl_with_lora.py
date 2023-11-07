@@ -3,12 +3,22 @@ import torch
 from diffusers import StableDiffusionXLPipeline
 
 # 模型路径
-model_path = "models/stable-diffusion-xl-base-1.0/sd_xl_base_1.0.safetensors"
-lora_model_path = "models/pixel-art-xl/pixel-art-xl.safetensors"
+model_path = "models/sd_xl_base_1.0.safetensors"
+lora_model_path = "models/pixel-art-xl.safetensors"
 
 # 初始化Pipeline
 pipe = StableDiffusionXLPipeline.from_single_file(model_path)
 pipe.load_lora_weights(lora_model_path)
+
+# LoRA one.
+lora_model_path_1 = "models/cyborg_style_xl.safetensors"
+pipe.load_lora_weights(lora_model_path_1)
+pipe.fuse_lora(lora_scale=0.7)
+
+# LoRA two.
+lora_model_path_2 = "models/Pikachu_SDXL.safetensors"
+pipe.load_lora_weights(lora_model_path_2)
+pipe.fuse_lora(lora_scale=0.7)
 
 # 确定设备
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -19,7 +29,7 @@ seed = 12345
 generator = torch.Generator(device=device).manual_seed(seed)
 
 # 设置参数
-prompt = "a photo of an astronaut riding a horse on mars"
+prompt = "cyborg style pikachu"
 negative_prompt = ""
 num_inference_steps = 30
 guidance_scale = 7.5  # 控制prompt的影响，较大的值将生成与prompt更紧密相关的图像
